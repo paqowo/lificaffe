@@ -6,7 +6,10 @@ import {
   Coffee,
   Award,
   Shield,
-  Linkedin
+  Linkedin,
+  Phone,  // Added
+  Globe,  // Added
+  Mail    // Added
 } from 'lucide-react';
 import SummaryView from './components/SummaryView';
 import DetailedView from './components/DetailedView';
@@ -71,6 +74,30 @@ const AuthorCard: React.FC = () => {
     .gold-progress-gradient {
       background: linear-gradient(to right, #BF953F, #FCF6BA);
     }
+    .animated-underline {
+      position: relative;
+      display: inline-block;
+      padding-bottom: 2px; /* Space for the underline */
+    }
+
+    .animated-underline::after {
+      content: '';
+      position: absolute;
+      width: 0%;
+      height: 2px; /* Underline thickness */
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: #8B5A2B; /* Gold color */
+      transition: width 0.3s ease-out; /* Smooth transition */
+    }
+
+    .animated-underline:hover::after {
+      width: 100%;
+    }
+    .cta-outer-glow {
+      filter: drop-shadow(0 0 10px rgba(139, 90, 43, 0.5)); /* Subtle gold glow */
+    }
   `;
 
   return (
@@ -134,25 +161,26 @@ const App: React.FC = () => {
       <nav className="fixed top-0 left-0 right-0 z-50 glass-effect border-b border-stone-200/80 print:hidden">
         <div className="max-w-7xl mx-auto px-6 flex items-center justify-between h-20">
           <div className="flex items-center gap-4 cursor-pointer group" onClick={() => setView('summary')}>
-            <img src="/zahoracka-praziaren-logo.jpg" alt="Záhorácka pražiareň logo" className="h-12 w-auto" />
-            <div className="leading-none">
+            <img src="/zahoracka-praziaren-logo.jpg" alt="Záhorácka pražiareň logo" className="h-16 w-auto" /> {/* Changed h-12 to h-16 */}
+            <div className=""> {/* Removed leading-none */}
               <span className="block text-sm font-semibold tracking-widest uppercase">ZÁHORÁCKA PRAŽIAREŇ</span>
-              <span className="text-[9px] font-medium tracking-widest uppercase text-stone-400/90">GROWTH STRATEGY V2.0</span>
+              <span className="block text-xs font-medium tracking-widest uppercase text-stone-400/90">GROWTH STRATEGY V2.0</span> {/* Added block and changed text-[9px] to text-xs */}
             </div>
           </div>
-          <div className="hidden lg:flex items-center gap-10 text-xs font-bold tracking-widest uppercase text-stone-600">
+          <div className="hidden lg:flex items-center gap-10 text-xs font-bold tracking-widest uppercase text-stone-500">
             {view === 'summary' ? (
               <>
-                <a href="#summary" className="transition-colors hover:text-[#1A3C34]">DOJEM</a>
-                <button onClick={() => setView('detailed')} className="transition-colors hover:text-[#1A3C34]">ANALÝZA</button>
+                <a href="#summary" className="animated-underline transition-colors hover:text-[#8B5A2B]">DOJEM</a>
+                <button onClick={() => setView('detailed')} className="animated-underline transition-colors hover:text-[#8B5A2B]">ANALÝZA</button>
+                <a href="mailto:wisegold.ai@gmail.com" className="animated-underline transition-colors hover:text-[#8B5A2B]">KONTAKT</a>
               </>
             ) : (
-              <button onClick={() => setView('summary')} className="flex items-center gap-2 transition-colors hover:text-[#1A3C34]">
+              <button onClick={() => setView('summary')} className="flex items-center gap-2 transition-all duration-300 hover:text-white hover:scale-105">
                 <ArrowLeft className="w-3 h-3" /> ZPĚT NA ÚVOD
               </button>
             )}
           </div>
-          <button onClick={() => { if (view !== 'detailed') { setView('detailed'); setTimeout(() => window.print(), 350); } else { window.print(); } }} className="relative overflow-hidden cta-button shadow-lg hover:shadow-xl transform hover:scale-105 flex items-center gap-2 rounded-sm bg-[#2D241E] px-6 py-3 text-[10px] font-bold uppercase tracking-widest text-white transition-all duration-300 hover:bg-[#1A3C34]">
+          <button onClick={() => { if (view !== 'detailed') { setView('detailed'); setTimeout(() => window.print(), 350); } else { window.print(); } }} className="relative overflow-hidden cta-button shadow-lg hover:shadow-xl hover:drop-shadow-[0_0_8px_rgba(45,36,30,0.5)] transform hover:scale-105 flex items-center gap-2 rounded-sm bg-[#2D241E] px-6 py-3 text-[10px] font-bold uppercase tracking-widest text-white transition-all duration-300 hover:bg-[#1A3C34]">
             <Download className="w-4 h-4" /> PDF Audit
           </button>
         </div>
@@ -167,29 +195,58 @@ const App: React.FC = () => {
       </main>
 
       <footer className="bg-black text-white py-20 px-6 print:hidden">
-        <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center">
-          {/* Left Side */}
-          <div>
+        <div className="max-w-7xl mx-auto grid md:grid-cols-3 gap-16 items-start">
+          {/* Column 1: Agency Branding */}
+          <div className="flex flex-col items-start"> {/* Added flex flex-col items-start for left alignment */}
             <img src="/wisegold-logo.jpeg" alt="WiseGold Logo" className="h-48 w-auto object-contain mb-8" />
-            <p className="text-stone-400 text-sm max-w-sm leading-relaxed font-light">
-              Profesionální audit digitální identity se zaměřením na UX, SEO a konverzní optimalizaci.
+            <p className="text-stone-400 text-base leading-relaxed"> {/* Changed text-sm to text-base, added leading-relaxed */}
+              Strategická transformace digitální identity.</p><p> Kde se precizní analýza potkává s měřitelným růstem.
             </p>
           </div>
           
-          {/* Right Side */}
-          <div className="flex flex-col items-center md:items-end">
+          {/* Column 2: Contact & Social (Center-aligned) */}
+          <div className="flex flex-col items-center text-center">
+            <h5 className="text-[10px] font-bold uppercase tracking-widest text-stone-400 mb-4">KONTAKTNÍ ÚDAJE</h5>
+            <ul className="space-y-3 mb-8 flex flex-col items-center">
+              <li>
+                <a href="tel:+420774206249" className="flex items-center gap-2 text-stone-400 hover:text-white transition-colors">
+                  <Phone className="w-4 h-4 text-[#D4AF37]" />
+                  <span className="text-sm">+420 774 206 249</span>
+                </a>
+              </li>
+              <li>
+                <a href="https://www.wisegold.eu/index" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-stone-400 hover:text-white transition-colors">
+                  <Globe className="w-4 h-4 text-[#D4AF37]" />
+                  <span className="text-sm">www.wisegold.eu</span>
+                </a>
+              </li>
+              <li>
+                <a href="mailto:wisegold.ai@gmail.com" className="flex items-center gap-2 text-stone-400 hover:text-white transition-colors">
+                  <Mail className="w-4 h-4 text-[#D4AF37]" />
+                  <span className="text-sm">wisegold.ai@gmail.com</span>
+                </a>
+              </li>
+            </ul>
+            {/* LinkedIn Icon Upgrade */}
+            <a href="https://www.linkedin.com/in/pavel-toman-58101959/" target="_blank" rel="noopener noreferrer"
+               className="flex items-center justify-center w-12 h-12 rounded-full border border-[#D4AF37]/30 text-stone-400 hover:border-[#D4AF37] hover:text-[#D4AF37] hover:scale-110 shadow-[0_0_15px_rgba(212,175,55,0.4)] transition-all duration-500 bg-stone-900">
+              <Linkedin className="w-6 h-6" />
+            </a>
+          </div>
+
+          {/* Column 3: Author Signature (Right-aligned) */}
+          <div className="flex flex-col items-end text-right">
             <div className="text-[10px] font-bold uppercase tracking-widest text-stone-400 mb-4">VYPRACOVAL</div>
-            <div className="flex flex-row items-center gap-8">
-              <div className="font-serif italic text-xl text-white text-right">WiseGold Consultant</div>
-              <AuthorCard />
-            </div>
-            <div className="text-stone-500 text-[10px] font-bold uppercase tracking-tighter mt-8 text-center md:text-right">
-              <div>&copy; {new Date().getFullYear()} Důvěrný strategický dokument.</div>
-              <div className="text-[8px] text-stone-500 mt-2">
-                Icon by <a href="https://www.flaticon.com/free-icons/coffee-beans" title="coffee beans icons" className="hover:underline" target="_blank" rel="noopener noreferrer">Fir3Ghost - Flaticon</a>
-              </div>
+            <div className="flex flex-col items-end gap-2 mb-4">
+                <div className="font-serif italic text-xl text-white opacity-80">WiseGold Consultant</div>
+                <AuthorCard />
             </div>
           </div>
+        </div>
+
+        {/* Bottom Bar: Copyright and Attribution (Centered across all columns) */}
+        <div className="max-w-7xl mx-auto px-6 pt-8 text-[9px] text-stone-600 font-bold uppercase tracking-[0.2em] text-center border-t border-white/5 mt-8"> {/* Adjusted classes for bottom bar */}
+          <div>&copy; {new Date().getFullYear()} DŮVĚRNÝ STRATEGICKÝ DOKUMENT.</div>
         </div>
       </footer>
     </div>

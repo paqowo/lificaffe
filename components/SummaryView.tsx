@@ -22,31 +22,30 @@ const SummaryView: React.FC<{ onOpenDetailed: () => void }> = ({ onOpenDetailed 
     {/* Hero Section */}
     <header className="relative min-h-screen flex items-center pt-20 overflow-hidden print:hidden">
       <div className="absolute inset-0 hero-gradient z-0"></div>
-      <div className="relative z-10 max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center">
+      <div className="relative z-10 max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center pb-12">
         <div className="text-white">
           <div className="inline-flex items-center gap-2 bg-[#1A3C34] px-4 py-1.5 rounded-full mb-8">
             <Zap className="w-3.5 h-3.5 fill-current" />
             <span className="text-[10px] font-bold uppercase tracking-widest">Digital Growth Audit v2.0</span>
           </div>
-          <h1 className="text-6xl md:text-8xl font-serif font-bold leading-[1.1] mb-8">
-            Příběh regionu, <br />
-            <span className="italic text-[#D4C3B3]">výkon e-shopu.</span>
-          </h1>
-          <p className="text-xl md:text-2xl font-light text-stone-300 max-w-xl leading-relaxed mb-12">
-            Jak proměnit autentickou atmosféru Záhorácké pražírny v nejvýkonnější e-commerce platformu v segmentu.
-          </p>
-          <div className="flex flex-wrap gap-4">
-            <button 
+          <div className="flex flex-col items-start"> {/* New flex container */}
+            <h1 className="text-6xl md:text-8xl font-serif font-bold leading-[1.1] mb-8">
+              Příběh regionu, <br />
+              <span className="italic text-[#D4C3B3]">výkon e-shopu.</span>
+            </h1>
+            <p className="text-xl md:text-2xl font-light text-stone-300 max-w-xl leading-relaxed"> {/* Removed mb-24 */}
+              Jak proměnit autentickou atmosféru Záhorácké pražírny v nejvýkonnější e-commerce platformu v segmentu.
+            </p>
+            <button
               onClick={onOpenDetailed}
-              className="relative overflow-hidden cta-button transform hover:scale-105 shadow-xl hover:shadow-2xl bg-white text-[#2D241E] px-8 py-4 text-xs font-bold uppercase tracking-widest hover:bg-[#D4C3B3] transition-all duration-300 flex items-center gap-2 group"
-            >
-              Kompletní rozbor <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              className="mt-8 relative overflow-hidden cta-button transform transition-all duration-300 hover:scale-105 hover:-translate-y-1 shadow-lg hover:shadow-xl hover:cta-outer-glow bg-[#1A1A1A] border border-[#8B5A2B]/50 text-white px-8 py-4 text-xs font-bold uppercase tracking-widest hover:bg-[#8B5A2B] flex items-center gap-2 group"
+            >              Kompletní rozbor <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </button>
           </div>
         </div>
         
         <div className="hidden lg:block">
-          <div className="bg-white/5 backdrop-blur-md border border-white/10 p-10 rounded-lg shadow-2xl">
+          <div className="bg-white/5 backdrop-blur-md border border-white/10 p-6 rounded-lg shadow-2xl">
              <div class="flex flex-col gap-8">
                 <CircularGauge
                   label="Vizuální dojem"
@@ -70,7 +69,7 @@ const SummaryView: React.FC<{ onOpenDetailed: () => void }> = ({ onOpenDetailed 
                   unit="/10"
                 />
                 <div className="pt-4">
-                   <p className="text-xs text-stone-400 italic">"Základ je vynikající, potenciál růstu leží v technických detailech a obsahu."</p>
+                   <p className="text-xs text-stone-100 italic font-medium">"Základ je vynikající, potenciál růstu leží v technických detailech a obsahu."</p>
                 </div>
              </div>
           </div>

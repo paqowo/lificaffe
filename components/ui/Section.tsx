@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 
-const Section: React.FC<{ title?: string; subtitle?: string; children: React.ReactNode; bg?: string; id?: string; className?: string }> = ({ title, subtitle, children, bg, id, className }) => {
+const Section: React.FC<{ title?: string; subtitle?: string; children: React.ReactNode; bg?: string; id?: string; className?: string; delay?: string }> = ({ title, subtitle, children, bg, id, className, delay }) => {
     const [isVisible, setIsVisible] = useState(false);
     const sectionRef = useRef<HTMLElement>(null);
 
@@ -37,8 +37,8 @@ const Section: React.FC<{ title?: string; subtitle?: string; children: React.Rea
         <section
             ref={sectionRef}
             id={id}
-            className={`py-24 px-6 md:px-12 ${bg || ''} ${className || ''} transition-all duration-1000 ease-out ${
-                isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'
+            className={`py-24 px-6 md:px-12 ${bg || ''} ${className || ''} transition-all duration-800 ease-out ${delay || ''} ${
+                isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
             }`}
         >
             <div className="max-w-6xl mx-auto">

@@ -10,25 +10,25 @@ import ProblemBox from './ui/ProblemBox';
 import TimelineStep from './ui/TimelineStep';
 
 const DetailedView: React.FC<{ onBack: () => void }> = ({ onBack }) => (
-  <div className="bg-white min-h-screen animate-in slide-in-from-bottom-4 duration-700">
+  <div className="bg-white min-h-screen">
     {/* Navigation bar for detailed view */}
-    <div className="bg-[#2D241E] text-white pt-32 pb-24 px-6 md:px-12 print:bg-white print:text-black print:pt-10">
+    <div className="bg-[#2D241E] text-white pt-32 pb-24 px-6 md:px-12 print:bg-white print:text-black print:pt-10 animate-in fade-in slide-in-from-bottom-4 duration-800">
       <div className="max-w-5xl mx-auto">
         <button onClick={onBack} className="flex items-center gap-2 text-[#D4C3B3] mb-12 hover:text-white transition-colors print:hidden">
           <ArrowLeft className="w-4 h-4" /> Zpět na přehled
         </button>
         <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-8">
           <div>
-            <div className="text-[10px] font-bold uppercase tracking-[0.4em] text-[#1A3C34] mb-4">Interní strategický dokument</div>
+            <div className="text-[10px] font-bold uppercase tracking-[0.4em] text-[#D4AF37] mb-4">Interní strategický dokument</div>
             <h1 className="text-4xl md:text-7xl font-serif font-bold mb-4 tracking-tight">Kompletní Audit</h1>
-            <p className="text-stone-400 font-light text-xl">Záhorácka pražiareň — Strategie pro rok 2026</p>
+            <p className="text-stone-300 font-light text-xl">Záhorácka pražiareň — Strategie pro rok 2026</p>
           </div>
         </div>
       </div>
     </div>
 
     {/* Section 1: Detailed Strengths */}
-    <Section title="1. Silné stránky a základy" subtitle="Na čem stavíme budoucí úspěch.">
+    <Section title="1. Silné stránky a základy" subtitle="Na čem stavíme budoucí úspěch." delay="delay-100">
        <div className="grid md:grid-cols-2 gap-12">
           <DetailedItem 
             title="Vizuální identita a UX" 
@@ -50,7 +50,7 @@ const DetailedView: React.FC<{ onBack: () => void }> = ({ onBack }) => (
     </Section>
 
     {/* Section 2: Detailed Problems */}
-    <Section title="2. Slabiny a technické bariéry" bg="bg-stone-50">
+    <Section title="2. Slabiny a technické bariéry" bg="bg-stone-50" delay="delay-200">
        <div className="space-y-12">
           <ProblemBox 
             area="SEO"
@@ -74,7 +74,7 @@ const DetailedView: React.FC<{ onBack: () => void }> = ({ onBack }) => (
     </Section>
 
     {/* Section 3: SEO Transformation Table */}
-    <Section title="3. Strategie: SEO Transformace">
+    <Section title="3. Strategie: SEO Transformace" delay="delay-300">
        <div className="overflow-x-auto">
           <table className="w-full text-left border-collapse border border-stone-200">
              <thead>
@@ -85,17 +85,17 @@ const DetailedView: React.FC<{ onBack: () => void }> = ({ onBack }) => (
                 </tr>
              </thead>
              <tbody className="text-sm">
-                <tr className="border-b border-stone-100">
+                <tr className="border-b border-stone-100 transition-colors hover:bg-stone-50">
                    <td className="p-6 font-bold">Homepage</td>
                    <td className="p-6 text-stone-500">Záhorácka pražiareň</td>
                    <td className="p-6 font-medium text-emerald-700 underline underline-offset-4">Čerstvo pražená káva | Záhorácka pražiareň</td>
                 </tr>
-                <tr className="border-b border-stone-100">
+                <tr className="border-b border-stone-100 transition-colors hover:bg-stone-50">
                    <td className="p-6 font-bold">Kategorie Káva</td>
                    <td className="p-6 text-stone-500">Káva</td>
                    <td className="p-6 font-medium text-emerald-700 underline underline-offset-4">Výberová zrnková káva — čerstvo pražená | Záhorácka pražiareň</td>
                 </tr>
-                <tr>
+                <tr className="transition-colors hover:bg-stone-50">
                    <td className="p-6 font-bold">Detail produktu</td>
                    <td className="p-6 text-stone-500">Brazília Santos</td>
                    <td className="p-6 font-medium text-emerald-700 underline underline-offset-4">Káva Brazília Santos 250g | Záhorácka pražiareň</td>
@@ -106,10 +106,10 @@ const DetailedView: React.FC<{ onBack: () => void }> = ({ onBack }) => (
     </Section>
 
     {/* Section 4: Implementation Plan */}
-    <Section title="4. Akční Plán (Roadmap)" bg="bg-[#2D241E]" className="text-white">
+    <Section title="4. Akční Plán (Roadmap)" bg="bg-[#2D241E]" className="text-white" delay="delay-400">
        <div className="grid md:grid-cols-2 gap-16">
           <div className="space-y-12">
-             <h3 className="text-[#1A3C34] font-bold uppercase tracking-widest text-xs">Fáze 1: Prvních 14 dní</h3>
+             <h3 className="text-[#D4AF37] font-bold uppercase tracking-widest text-xs">Fáze 1: Prvních 14 dní</h3>
              <ul className="space-y-6">
                 <TimelineStep title="Kritické SEO" desc="Oprava H1 nadpisů a meta titulků u top 10 produktů." />
                 <TimelineStep title="Trust Bar" desc="Přidání lišty 'Doprava nad 50 €', 'Pražíme týdně' pod menu." />
@@ -117,7 +117,7 @@ const DetailedView: React.FC<{ onBack: () => void }> = ({ onBack }) => (
              </ul>
           </div>
           <div className="space-y-12">
-             <h3 className="text-[#1A3C34] font-bold uppercase tracking-widest text-xs">Fáze 2: 1–3 měsíce</h3>
+             <h3 className="text-[#D4AF37] font-bold uppercase tracking-widest text-xs">Fáze 2: 1–3 měsíce</h3>
              <ul className="space-y-6">
                 <TimelineStep title="Social Proof" desc="Nasazení systému pro sběr a zobrazení recenzí." />
                 <TimelineStep title="Obsahová hloubka" desc="Doplnění návodů na přípravu ke každé kávě." />
