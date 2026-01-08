@@ -46,6 +46,10 @@ const DetailedView: React.FC<{ onBack: () => void }> = ({ onBack }) => (
             title="Důvěryhodnost" 
             desc="Fyzická adresa, telefon a lidská tvář sekce 'O nás' odlišuje pražírnu od anonymních e-shopů." 
           />
+          <DetailedItem 
+            title="Vizuální schizofrenie" 
+            desc="Konflikt tradiční regionální značky 'Záhorácka pražiareň' s AI generovanými tropickými motivy (kolibříci). Vzniká zmatek, který snižuje autentičnost a důvěru zákazníků." 
+          />
        </div>
     </Section>
 
@@ -69,6 +73,35 @@ const DetailedView: React.FC<{ onBack: () => void }> = ({ onBack }) => (
             title="Absence Social Proof a hloubky"
             detail="Chybí hodnocení od zákazníků u produktů. Popisy káv postrádají detailní návody na přípravu (recepty)."
             impact="Ztracená příležitost pro budování autority a SEO na long-tail."
+          />
+          <ProblemBox 
+            area="Technická data webu"
+            title="Kritické technické nedostatky"
+            detail={
+              <>
+                <ul className="list-disc pl-5 space-y-1">
+                  <li><strong>Rychlost:</strong> 8,9 sekundy (Cíl: pod 5s)</li>
+                  <li><strong>Váha stránky:</strong> 12,81 MB (84 % tvoří neoptimalizované obrázky)</li>
+                  <li><strong>CLS (Nestabilita):</strong> 0,5038 (Vysoká vizuální nestabilita při načítání)</li>
+                  <li><strong>Bezpečnost:</strong> SSL certifikát expiruje 4. února 2026, chybí SPF záznam (riziko spamu)</li>
+                </ul>
+              </>
+            }
+            impact="Zpomaluje načítání, snižuje SEO skóre, ohrožuje bezpečnost a důvěryhodnost."
+          />
+          <ProblemBox 
+            area="BUSINESS BARRIER"
+            title="Kritický limit dopravy zdarma"
+            detail={
+              <>
+                <ul className="list-disc pl-5 space-y-1">
+                  <li><strong>Aktuální limit:</strong> 80 € (nedosažitelný pro většinu koncových zákazníků)</li>
+                  <li><strong>Konkurence (Ebenica, Coffeein):</strong> 40–50 €</li>
+                  <li><strong>Strategické doporučení:</strong> Snížit na 45 € pro zvýšení AOV a snížení počtu opuštěných košíků.</li>
+                </ul>
+              </>
+            }
+            impact="Brání ve vyšších objednávkách a způsobuje ztrátu potenciálních zákazníků."
           />
        </div>
     </Section>
@@ -103,25 +136,36 @@ const DetailedView: React.FC<{ onBack: () => void }> = ({ onBack }) => (
              </tbody>
           </table>
        </div>
+       <div className="mt-8 text-sm text-stone-500">
+          <strong>Důležité:</strong> Chybí soubor <code>Sitemap.xml</code> a meta popisky mají často jen 78 znaků namísto doporučených 150-220.
+       </div>
     </Section>
 
     {/* Section 4: Implementation Plan */}
     <Section title="4. Akční Plán (Roadmap)" bg="bg-[#2D241E]" className="text-white" delay="delay-400">
-       <div className="grid md:grid-cols-2 gap-16">
+       <div className="grid md:grid-cols-3 gap-16">
           <div className="space-y-12">
-             <h3 className="text-[#D4AF37] font-bold uppercase tracking-widest text-xs">Fáze 1: Prvních 14 dní</h3>
+             <h3 className="text-[#D4AF37] font-bold uppercase tracking-widest text-xs">Fáze 1: Quick Wins (Týden 1)</h3>
              <ul className="space-y-6">
-                <TimelineStep title="Kritické SEO" desc="Oprava H1 nadpisů a meta titulků u top 10 produktů." />
-                <TimelineStep title="Trust Bar" desc="Přidání lišty 'Doprava nad 50 €', 'Pražíme týdně' pod menu." />
-                <TimelineStep title="Technické" desc="Komprese velkých bannerových obrázků pro zrychlení." />
+                <TimelineStep title="Limit dopravy" desc="Snížení limitu dopravy zdarma na 45 €." />
+                <TimelineStep title="Vizuální korekce" desc="Výměna 'kolibříka' za autentickou fotku pražírny." />
+                <TimelineStep title="Optimalizace obrázků" desc="Převod klíčových obrázků do formátu WebP pro zrychlení načítání." />
              </ul>
           </div>
           <div className="space-y-12">
-             <h3 className="text-[#D4AF37] font-bold uppercase tracking-widest text-xs">Fáze 2: 1–3 měsíce</h3>
+             <h3 className="text-[#D4AF37] font-bold uppercase tracking-widest text-xs">Fáze 2: Důvěra a SEO (Týden 2 – Měsíc 1)</h3>
              <ul className="space-y-6">
-                <TimelineStep title="Social Proof" desc="Nasazení systému pro sběr a zobrazení recenzí." />
-                <TimelineStep title="Obsahová hloubka" desc="Doplnění návodů na přípravu ke každé kávě." />
-                <TimelineStep title="E-mail Marketing" desc="Nastavení automatu pro opuštěný košík." />
+                <TimelineStep title="Social Proof" desc="Implementace systému recenzí (např. Heureka) pro budování důvěry." />
+                <TimelineStep title="Ikony důvěry" desc="Přidání ikon 'Rodinná firma' pod tlačítko košíku." />
+                <TimelineStep title="Bezpečnost a dohledatelnost" desc="Oprava expirace SSL certifikátu a přidání SPF záznamu." />
+             </ul>
+          </div>
+          <div className="space-y-12">
+             <h3 className="text-[#D4AF37] font-bold uppercase tracking-widest text-xs">Fáze 3: Autorita (Měsíc 1–3)</h3>
+             <ul className="space-y-6">
+                <TimelineStep title="Obsahový marketing" desc="Spuštění blogu s návody na přípravu kávy (např. Moka konvička, Chemex)." />
+                <TimelineStep title="Re-design vizuálu" desc="Kompletní re-design vizuální identity webu do zemitých tónů." />
+                <TimelineStep title="Brand Story" desc="Rozšíření sekce 'O nás' o příběh značky a vize." />
              </ul>
           </div>
        </div>

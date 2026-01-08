@@ -199,8 +199,8 @@ const App: React.FC = () => {
           {/* Column 1: Agency Branding */}
           <div className="flex flex-col items-start"> {/* Added flex flex-col items-start for left alignment */}
             <img src="/wisegold-logo.jpeg" alt="WiseGold Logo" className="h-48 w-auto object-contain mb-8" />
-            <p className="text-stone-400 text-base leading-relaxed"> {/* Changed text-sm to text-base, added leading-relaxed */}
-              Strategická transformace digitální identity.</p><p> Kde se precizní analýza potkává s měřitelným růstem.
+            <p className="text-stone-400 text-base leading-relaxed">
+              Strategická transformace digitální identity. Kde se precizní analýza potkává s měřitelným růstem.
             </p>
           </div>
           
