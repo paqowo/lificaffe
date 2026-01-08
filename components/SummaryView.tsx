@@ -15,6 +15,7 @@ import {
 } from 'lucide-react';
 import Section from './ui/Section';
 import Card from './ui/Card';
+import CircularGauge from './ui/CircularGauge';
 
 const SummaryView: React.FC<{ onOpenDetailed: () => void }> = ({ onOpenDetailed }) => (
   <div className="animate-in fade-in duration-700">
@@ -37,7 +38,7 @@ const SummaryView: React.FC<{ onOpenDetailed: () => void }> = ({ onOpenDetailed 
           <div className="flex flex-wrap gap-4">
             <button 
               onClick={onOpenDetailed}
-              className="bg-white text-[#2D241E] px-8 py-4 text-xs font-bold uppercase tracking-widest hover:bg-[#D4C3B3] transition-all flex items-center gap-2 group shadow-xl"
+              className="relative overflow-hidden cta-button transform hover:scale-105 shadow-xl hover:shadow-2xl bg-white text-[#2D241E] px-8 py-4 text-xs font-bold uppercase tracking-widest hover:bg-[#D4C3B3] transition-all duration-300 flex items-center gap-2 group"
             >
               Kompletní rozbor <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </button>
@@ -46,19 +47,28 @@ const SummaryView: React.FC<{ onOpenDetailed: () => void }> = ({ onOpenDetailed 
         
         <div className="hidden lg:block">
           <div className="bg-white/5 backdrop-blur-md border border-white/10 p-10 rounded-lg shadow-2xl">
-             <div className="space-y-8">
-                <div className="flex justify-between items-end border-b border-white/10 pb-4">
-                  <span className="text-xs uppercase tracking-widest text-stone-400">Vizuální dojem</span>
-                  <span className="text-2xl font-serif text-emerald-400">10/10</span>
-                </div>
-                <div className="flex justify-between items-end border-b border-white/10 pb-4">
-                  <span className="text-xs uppercase tracking-widest text-stone-400">SEO Autorita</span>
-                  <span className="text-2xl font-serif text-amber-400">4/10</span>
-                </div>
-                <div className="flex justify-between items-end border-b border-white/10 pb-4">
-                  <span className="text-xs uppercase tracking-widest text-stone-400">Konverzní cesta</span>
-                  <span className="text-2xl font-serif text-blue-400">6/10</span>
-                </div>
+             <div class="flex flex-col gap-8">
+                <CircularGauge
+                  label="Vizuální dojem"
+                  value={10}
+                  max={10}
+                  colorClass="text-emerald-400"
+                  unit="/10"
+                />
+                <CircularGauge
+                  label="SEO Autorita"
+                  value={4}
+                  max={10}
+                  colorClass="text-amber-400"
+                  unit="/10"
+                />
+                <CircularGauge
+                  label="Konverzní cesta"
+                  value={6}
+                  max={10}
+                  colorClass="text-blue-400"
+                  unit="/10"
+                />
                 <div className="pt-4">
                    <p className="text-xs text-stone-400 italic">"Základ je vynikající, potenciál růstu leží v technických detailech a obsahu."</p>
                 </div>
@@ -88,7 +98,7 @@ const SummaryView: React.FC<{ onOpenDetailed: () => void }> = ({ onOpenDetailed 
 
     {/* Section 1: Impression */}
     <Section id="summary" title="Celkový dojem" subtitle="Analýza prvního kontaktu návštěvníka se značkou.">
-      <div className="bg-white border border-stone-200 p-10 md:p-16 relative overflow-hidden shadow-sm">
+      <div className="bg-white/5 backdrop-blur-sm border border-white/10 p-10 md:p-16 relative overflow-hidden shadow-lg">
         <div className="absolute top-0 right-0 p-12 opacity-[0.03] rotate-12">
           <Coffee size={250} />
         </div>
@@ -111,26 +121,27 @@ const SummaryView: React.FC<{ onOpenDetailed: () => void }> = ({ onOpenDetailed 
     </Section>
 
     {/* Section 2: Quick Audit */}
-    <Section bg="bg-stone-50/50" title="Klíčové nálezy">
-       <div className="grid md:grid-cols-3 gap-8">
-          <Card 
-            icon={<Search className="w-6 h-6 text-[#1A3C34]" />}
-            title="SEO Bariéry"
-            desc="Generické meta popisky a slabé H1 nadpisy omezují organickou návštěvnost z Google."
-          />
-          <Card 
-            icon={<MousePointer2 className="w-6 h-6 text-[#1A3C34]" />}
-            title="UX Tření"
-            desc="Nákupní tlačítka v seznamech jsou vizuálně nevýrazná, což snižuje konverzní poměr."
-          />
-          <Card 
-            icon={<Smartphone className="w-6 h-6 text-[#1A3C34]" />}
-            title="Technický stav"
-            desc="Rychlost na mobilech je dobrá, ale vyžaduje optimalizaci velkých obrázků."
-          />
-       </div>
-    </Section>
-
+        <Section bg="bg-stone-50/50" title="Klíčové nálezy">
+           <div className="grid md:grid-cols-3 gap-8">
+              <Card
+                icon={<Search className="w-6 h-6 text-[#1A3C34]" />}
+                title="SEO Bariéry"
+                desc="Generické meta popisky a slabé H1 nadpisy omezují organickou návštěvnost z Google."
+                tooltipContent="Optimalizace SEO je klíčová pro získání více zákazníků z vyhledávačů. Zlepšení meta popisků a nadpisů znamená vyšší viditelnost a organickou návštěvnost, což přímo vede k vyšším tržbám."
+              />
+              <Card
+                icon={<MousePointer2 className="w-6 h-6 text-[#1A3C34]" />}
+                title="UX Tření"
+                desc="Nákupní tlačítka v seznamech jsou vizuálně nevýrazná, což snižuje konverzní poměr."
+                tooltipContent="Hladká uživatelská zkušenost je základem pro konverze. Když zákazníci snadno najdou a koupí produkty, zvyšuje se nejen prodej, ale i jejich spokojenost a loajalita. Optimalizace CTA tlačítek je přímá cesta k vyšším konverzím."
+              />
+              <Card
+                icon={<Smartphone className="w-6 h-6 text-[#1A3C34]" />}
+                title="Technický stav"
+                desc="Rychlost a technická optimalizace webu jsou zásadní pro udržení pozornosti návštěvníků a zlepšení hodnocení ve vyhledávačích. Rychlejší web snižuje míru okamžitého opuštění a zvyšuje šanci na dokončení nákupu, což má přímý dopad na ziskovost."
+              />
+           </div>
+        </Section>
     {/* Section 3: Strategic Call */}
     <Section>
        <div className="bg-[#2D241E] p-12 md:p-20 text-white relative overflow-hidden">
@@ -141,7 +152,7 @@ const SummaryView: React.FC<{ onOpenDetailed: () => void }> = ({ onOpenDetailed 
              </p>
              <button 
               onClick={onOpenDetailed}
-              className="bg-[#1A3C34] text-white px-10 py-5 text-xs font-bold uppercase tracking-widest hover:bg-white hover:text-[#2D241E] transition-all"
+              className="relative overflow-hidden cta-button transform hover:scale-105 shadow-lg hover:shadow-xl bg-[#1A3C34] text-white px-10 py-5 text-xs font-bold uppercase tracking-widest hover:bg-white hover:text-[#2D241E] transition-all duration-300"
              >
                Otevřít kompletní rozbor
              </button>

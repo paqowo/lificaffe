@@ -3,7 +3,10 @@ import React, { useState, useEffect } from 'react';
 import { 
   Download,
   ArrowLeft,
-  Coffee
+  Coffee,
+  Award,
+  Shield,
+  Linkedin
 } from 'lucide-react';
 import SummaryView from './components/SummaryView';
 import DetailedView from './components/DetailedView';
@@ -49,6 +52,25 @@ const AuthorCard: React.FC = () => {
     .photo-particle { position: absolute; border-radius: 50%; background-color: rgba(252, 211, 77, 0.6); animation: photo-particle-rise 1.8s ease-out forwards; }
     @keyframes ping { 75%, 100% { transform: scale(2); opacity: 0; } }
     .status-dot-ping { animation: ping 1.5s cubic-bezier(0, 0, 0.2, 1) infinite; }
+    
+    @keyframes shimmer {
+      0% { transform: translateX(-100%) skewX(-15deg); }
+      100% { transform: translateX(200%) skewX(-15deg); }
+    }
+    .cta-button::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 50%;
+      height: 100%;
+      background: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.2) 50%, rgba(255, 255, 255, 0) 100%);
+      animation: shimmer 4s infinite linear;
+      opacity: 0.6;
+    }
+    .gold-progress-gradient {
+      background: linear-gradient(to right, #BF953F, #FCF6BA);
+    }
   `;
 
   return (
@@ -82,13 +104,33 @@ const AuthorCard: React.FC = () => {
 // --- MAIN APP COMPONENT ---
 const App: React.FC = () => {
   const [view, setView] = useState<'summary' | 'detailed'>('summary');
+  const [scrollPercentage, setScrollPercentage] = useState(0);
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }, [view]);
 
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollTop = window.scrollY;
+      const docHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      if (docHeight > 0) {
+        setScrollPercentage((scrollTop / docHeight) * 100);
+      } else {
+        setScrollPercentage(0);
+      }
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   return (
     <div className="min-h-screen selection:bg-[#D4C3B3] selection:text-[#2D241E]">
+      {/* Golden Progress Line */}
+      <div className="fixed top-0 left-0 right-0 h-[2px] z-[100]">
+        <div className="h-full gold-progress-gradient" style={{ width: `${scrollPercentage}%` }}></div>
+      </div>
+
       <nav className="fixed top-0 left-0 right-0 z-50 glass-effect border-b border-stone-200/80 print:hidden">
         <div className="max-w-7xl mx-auto px-6 flex items-center justify-between h-20">
           <div className="flex items-center gap-4 cursor-pointer group" onClick={() => setView('summary')}>
@@ -110,7 +152,7 @@ const App: React.FC = () => {
               </button>
             )}
           </div>
-          <button onClick={() => { if (view !== 'detailed') { setView('detailed'); setTimeout(() => window.print(), 350); } else { window.print(); } }} className="flex items-center gap-2 rounded-sm bg-[#2D241E] px-6 py-3 text-[10px] font-bold uppercase tracking-widest text-white transition-all hover:bg-[#1A3C34]">
+          <button onClick={() => { if (view !== 'detailed') { setView('detailed'); setTimeout(() => window.print(), 350); } else { window.print(); } }} className="relative overflow-hidden cta-button shadow-lg hover:shadow-xl transform hover:scale-105 flex items-center gap-2 rounded-sm bg-[#2D241E] px-6 py-3 text-[10px] font-bold uppercase tracking-widest text-white transition-all duration-300 hover:bg-[#1A3C34]">
             <Download className="w-4 h-4" /> PDF Audit
           </button>
         </div>
