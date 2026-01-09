@@ -28,7 +28,7 @@ const DetailedView: React.FC<{ onBack: () => void }> = ({ onBack }) => (
     </div>
 
     {/* Section 1: Detailed Strengths */}
-    <Section title="1. Silné stránky a základy" subtitle="Na čem stavíme budoucí úspěch." delay="delay-100">
+    <Section title="1. Silné stránky a základy" subtitle="Na čem stavíme budoucí úspěch." delay="delay-100" className="print:break-before-page">
        <div className="grid md:grid-cols-2 gap-12">
           <DetailedItem 
             title="Vizuální identita a UX" 
@@ -54,7 +54,7 @@ const DetailedView: React.FC<{ onBack: () => void }> = ({ onBack }) => (
     </Section>
 
     {/* Section 2: Detailed Problems */}
-    <Section title="2. Slabiny a technické bariéry" bg="bg-stone-50" delay="delay-200">
+    <Section title="2. Slabiny a technické bariéry" bg="bg-stone-50" delay="delay-200" className="print:break-before-page">
        <div className="space-y-12">
           <ProblemBox 
             area="SEO"
@@ -107,7 +107,7 @@ const DetailedView: React.FC<{ onBack: () => void }> = ({ onBack }) => (
     </Section>
 
     {/* Section 3: SEO Transformation Table */}
-    <Section title="3. Strategie: SEO Transformace" delay="delay-300">
+    <Section title="3. Strategie: SEO Transformace" delay="delay-300" className="print:break-before-page">
        <div className="overflow-x-auto">
           <table className="w-full text-left border-collapse border border-stone-200">
              <thead>
@@ -142,7 +142,7 @@ const DetailedView: React.FC<{ onBack: () => void }> = ({ onBack }) => (
     </Section>
 
     {/* Section 4: Implementation Plan */}
-    <Section title="4. Akční Plán (Roadmap)" bg="bg-[#2D241E]" className="text-white" delay="delay-400">
+    <Section title="4. Akční Plán (Roadmap)" bg="bg-[#2D241E]" className="text-white print:break-before-page" delay="delay-400">
        <div className="grid md:grid-cols-3 gap-16">
           <div className="space-y-12">
              <h3 className="text-[#D4AF37] font-bold uppercase tracking-widest text-xs">Fáze 1: Quick Wins (Týden 1)</h3>
