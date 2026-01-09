@@ -10,7 +10,7 @@ import ProblemBox from './ui/ProblemBox';
 import TimelineStep from './ui/TimelineStep';
 
 const DetailedView: React.FC<{ onBack: () => void }> = ({ onBack }) => (
-  <div className="bg-white print-container"> {/* Removed min-h-screen */}
+  <div className="bg-white print:block"> {/* Removed min-h-screen */}
     {/* Navigation bar for detailed view */}
     <div className="bg-[#2D241E] text-white pt-32 pb-24 px-6 md:px-12 print:bg-white print:text-black print:pt-10 animate-in fade-in slide-in-from-bottom-4 duration-800 print:opacity-100 print:animate-none">
       <div className="max-w-5xl mx-auto">
