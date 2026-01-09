@@ -18,7 +18,7 @@ import Card from './ui/Card';
 import CircularGauge from './ui/CircularGauge';
 
 const SummaryView: React.FC<{ onOpenDetailed: () => void }> = ({ onOpenDetailed }) => (
-  <div className="animate-in fade-in duration-700">
+  <div className="animate-in fade-in duration-700 print:opacity-100 print:animate-none">
     {/* Hero Section */}
     <header className="relative min-h-screen flex items-center pt-20 overflow-hidden print:hidden">
       <div className="absolute inset-0 hero-gradient z-0"></div>
