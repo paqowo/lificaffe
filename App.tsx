@@ -106,7 +106,7 @@ const AuthorCard: React.FC = () => {
       <div className="relative w-48 group cursor-pointer author-card-container" onMouseEnter={generateParticles}>
         <div className="photo-container rounded-lg p-1 transition-all duration-500">
           <div className="relative overflow-hidden rounded-sm">
-            <img src={`${import.meta.env.BASE_URL}assets/images/author-photo.jpg`} alt="Author: Pavel Toman" className="w-full h-full object-cover filter grayscale group-hover:grayscale-0 transition-all duration-500" />
+            <img src={`${import.meta.env.BASE_URL}assets/images/photo-pavel.jpg`} alt="Author: Pavel Toman" className="w-full h-full object-cover filter grayscale group-hover:grayscale-0 transition-all duration-500" />
             <div className="absolute top-2 right-2">
               <span className="relative flex h-2 w-2">
                 <span className="status-dot-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
@@ -161,7 +161,7 @@ const App: React.FC = () => {
       <nav className="fixed top-0 left-0 right-0 z-50 glass-effect border-b border-stone-200/80 print:hidden">
         <div className="max-w-7xl mx-auto px-6 flex items-center justify-between h-20">
           <div className="flex items-center gap-4 cursor-pointer group" onClick={() => setView('summary')}>
-            <img src={`${import.meta.env.BASE_URL}assets/images/zahoracka-praziaren-logo.jpg`} alt="Záhorácka pražiareň logo" className="h-16 w-auto" /> {/* Changed h-12 to h-16 */}
+            <img src={`${import.meta.env.BASE_URL}assets/images/logo-zahoriacka.jpg`} alt="Záhorácka pražiareň logo" className="h-16 w-auto" /> {/* Changed h-12 to h-16 */}
             <div className=""> {/* Removed leading-none */}
               <span className="block text-sm font-semibold tracking-widest uppercase">ZÁHORÁCKA PRAŽIAREŇ</span>
               <span className="block text-xs font-medium tracking-widest uppercase text-stone-400/90">GROWTH STRATEGY V2.0</span> {/* Added block and changed text-[9px] to text-xs */}
@@ -198,7 +198,7 @@ const App: React.FC = () => {
         <div className="max-w-7xl mx-auto grid md:grid-cols-3 gap-16 items-start">
           {/* Column 1: Agency Branding */}
           <div className="flex flex-col items-start"> {/* Added flex flex-col items-start for left alignment */}
-            <img src={`${import.meta.env.BASE_URL}assets/images/wisegold-logo.jpg`} alt="WiseGold Logo" className="h-48 w-auto object-contain mb-8" />
+            <img src={`${import.meta.env.BASE_URL}assets/images/logo-wisegold.jpg`} alt="WiseGold Logo" className="h-48 w-auto object-contain mb-8" />
             <p className="text-stone-400 text-base leading-relaxed">
               Strategická transformace digitální identity. Kde se precizní analýza potkává s měřitelným růstem.
             </p>
