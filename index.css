@@ -1,3 +1,20 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@media print {
+  @page { margin: 15mm; size: auto; }
+  body, #root, .App, main { 
+    height: auto !important; 
+    overflow: visible !important; 
+    position: static !important;
+  }
+  .print-container {
+    display: block !important;
+  }
+  .animate-in, .fade-in, .slide-in { 
+    animation: none !important; 
+    opacity: 100 !important; 
+    transform: none !important; 
+  }
+}

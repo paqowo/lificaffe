@@ -10,7 +10,7 @@ import ProblemBox from './ui/ProblemBox';
 import TimelineStep from './ui/TimelineStep';
 
 const DetailedView: React.FC<{ onBack: () => void }> = ({ onBack }) => (
-  <div className="bg-white"> {/* Removed min-h-screen */}
+  <div className="bg-white print-container"> {/* Removed min-h-screen */}
     {/* Navigation bar for detailed view */}
     <div className="bg-[#2D241E] text-white pt-32 pb-24 px-6 md:px-12 print:bg-white print:text-black print:pt-10 animate-in fade-in slide-in-from-bottom-4 duration-800 print:opacity-100 print:animate-none">
       <div className="max-w-5xl mx-auto">
@@ -28,7 +28,7 @@ const DetailedView: React.FC<{ onBack: () => void }> = ({ onBack }) => (
     </div>
 
     {/* Section 1: Detailed Strengths */}
-    <Section title="1. Silné stránky a základy" subtitle="Na čem stavíme budoucí úspěch." delay="delay-100" className="pb-16"> {/* Removed print:break-before-page, Added pb-16 */}
+    <Section title="1. Silné stránky a základy" subtitle="Na čem stavíme budoucí úspěch." delay="delay-100" className="pb-16 print:break-before-page"> {/* Removed print:break-before-page, Added pb-16 */}
        <div className="grid md:grid-cols-2 gap-12">
           <DetailedItem 
             title="Vizuální identita a UX" 
@@ -54,7 +54,7 @@ const DetailedView: React.FC<{ onBack: () => void }> = ({ onBack }) => (
     </Section>
 
     {/* Section 2: Detailed Problems */}
-    <Section title="2. Slabiny a technické bariéry" bg="bg-stone-50" delay="delay-200" className="pb-16"> {/* Removed print:break-before-page, Added pb-16 */}
+    <Section title="2. Slabiny a technické bariéry" bg="bg-stone-50" delay="delay-200" className="pb-16 print:break-before-page"> {/* Removed print:break-before-page, Added pb-16 */}
        <div className="space-y-12">
           <ProblemBox 
             area="SEO"
@@ -107,7 +107,7 @@ const DetailedView: React.FC<{ onBack: () => void }> = ({ onBack }) => (
     </Section>
 
     {/* Section 3: SEO Transformation Table */}
-    <Section title="3. Strategie: SEO Transformace" delay="delay-300" className="pb-16"> {/* Removed print:break-before-page, Added pb-16 */}
+    <Section title="3. Strategie: SEO Transformace" delay="delay-300" className="pb-16 print:break-before-page"> {/* Removed print:break-before-page, Added pb-16 */}
        <div className="overflow-x-auto">
           <table className="w-full text-left border-collapse border border-stone-200">
              <thead>
@@ -142,7 +142,7 @@ const DetailedView: React.FC<{ onBack: () => void }> = ({ onBack }) => (
     </Section>
 
     {/* Section 4: Implementation Plan */}
-    <Section title="4. Akční Plán (Roadmap)" bg="bg-[#2D241E]" className="text-white pb-16" delay="delay-400"> {/* Removed print:break-before-page, Added pb-16 */}
+    <Section title="4. Akční Plán (Roadmap)" bg="bg-[#2D241E]" className="text-white pb-16 print:break-before-page" delay="delay-400"> {/* Removed print:break-before-page, Added pb-16 */}
        <div className="grid md:grid-cols-3 gap-16">
           <div className="space-y-12">
              <h3 className="text-[#D4AF37] font-bold uppercase tracking-widest text-xs">Fáze 1: Quick Wins (Týden 1)</h3>

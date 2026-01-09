@@ -39,7 +39,7 @@ const Section: React.FC<{ title?: string; subtitle?: string; children: React.Rea
             id={id}
             className={`py-24 px-6 md:px-12 ${bg || ''} ${className || ''} transition-all duration-800 ease-out ${delay || ''} ${
                 isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
-            }`}
+            } print:break-inside-avoid`}
         >
             <div className="max-w-6xl mx-auto">
                 {title && (
