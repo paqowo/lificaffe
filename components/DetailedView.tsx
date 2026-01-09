@@ -169,7 +169,7 @@ const DetailedView: React.FC<{ onBack: () => void }> = ({ onBack }) => (
              </ul>
           </div>
        </div>
-       <div className="text-center text-[10px] text-stone-400 mt-8 pt-4 border-t border-stone-700/50">
+       <div className="mt-12 text-center text-stone-400 text-[10px] italic">
           Tento dokument je důvěrný a je určen výhradně pro vedení Záhorácké pražírny. Vypracováno pro Strategii 2026.
        </div>
     </Section>
