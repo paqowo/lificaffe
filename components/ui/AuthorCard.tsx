@@ -100,7 +100,7 @@ const AuthorCard = () => {
                 If your file is a .png or .jpeg, please change the extension below.
                 This file must be in the 'public' folder. */}
             <img
-              src="/author-photo.jpg"
+              src={`${import.meta.env.BASE_URL}assets/images/author-photo.jpg`}
               alt="Author: Pavel Toman"
               className="w-full h-full object-cover filter grayscale group-hover:grayscale-0 transition-all duration-500"
             />
